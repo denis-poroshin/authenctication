@@ -20,15 +20,14 @@ public class EmployeeController {
         return employeeService.createEmployee(employee);
     }
     @PutMapping("/{id}")
-    @PreAuthorize("hasAnyAuthority('ROLE_ADMIN')")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     public void changeEmployee(@PathVariable long id, @RequestBody EmployeeEntity employee) {
         employeeService.changeEmployee(id, employee);
 
     }
     @DeleteMapping("/{id}")
-    @PreAuthorize("hasAnyAuthority('ROLE_ADMIN')")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     public EmployeeEntity deleteEmployee(@PathVariable long id) {
-        System.out.println("Пришел в делет");
         return employeeService.deleteEmployee(id);
     }
 
